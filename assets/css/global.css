@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url("bootstrap.min.css");
+@import url("data-table.css");
+@import url("custom.css");
+@import url("responsive.css");
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 25px;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+ ::selection {
+    color: #000;
+    background: rgb(229, 246, 254);
+}
+
+img {
+    max-width: 100%;
+}
+
+img,
+label {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+}
+
+a,
+a:hover,
+a:focus {
+    text-decoration: none;
+    -webkit-transition: 300ms all;
+    transition: 300ms all;
+    color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 65px;
+    line-height: 78px;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 50px;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+select {
+    color: #707070;
+    border-color: #C9C9C9;
+    height: 44px;
+    margin: 0;
+    border-radius: 5px;
+    padding: 8px 10px;
+    display: block;
+    width: 100%;
+}
+
+.tabel-head select {
+    color: #4b5687;
+    border-color: #4b5687;
+}
+
+.my-profile-choose-file {
+    opacity: 0;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    border-radius: 50%;
+    display: none;
+}
+
+.buttons-csv {
+    display: none;
+}
+
+.save-alert {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    z-index: 9;
+    max-width: max-content;
+    width: 100%;
+    transform: translate(-50%);
+    padding: 15px 30px !important;
+    text-align: center;
+}
+
+.save-alert p {
+    margin-bottom: 0;
+}
+
+.fade.in:not(.show) {
+    opacity: 1;
+}
+
+.swal-footer {
+    text-align: center !important;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    z-index: 2;
+    font-size: 30px;
+    padding: .75rem 1.25rem;
+    color: inherit;
+}
