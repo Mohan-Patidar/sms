@@ -19,7 +19,8 @@ class ExtraPayController extends Controller
     }
     public function show(Request $request,$id){
 
-        $students =Payment::find($id);
+        $student =Payment::find($id);
+        $class = Student_classe::get(); 
         // $data = DB::table('payments')
         // ->select('payments.*','repayments.take_amount','repayments.gave_amount')
         // ->join('repayments', 'payments.id', '=', 'repayments.payments_id')
@@ -28,13 +29,13 @@ class ExtraPayController extends Controller
         // $gave = Repayment::where("payments_id", "=", $id)->sum('gave_amount');
         // $take = Repayment::where("payments_id", "=", $id)->sum('take_amount');
         // $due=$gave-$take;
-        // foreach($data as $p){
-        //     $name=$p->name;
-        //     $id=$p->id;
+      
+          
+            $id=$student->id;
             
-        // }
+      
         
-        return view ('admin.extra.show',compact("id"));
+        return view ('admin.extra.show',compact("class","student","id"));
             
        
      }
@@ -67,6 +68,27 @@ class ExtraPayController extends Controller
         $repayments->details = $request->detail;
         $repayments->date = $request->date;
         $repayments->take_amount =0;
+        $repayments->save();
+
+        $arr=["msg"=>"success"];
+        echo json_encode($arr); 
+        // return  response()->json( $payments);
+    }
+    public function subpayment(Request $request){
+        $id=$request->id;
+        $old_price=$request->old_price;
+        $c_price=$request->price;
+        $result=$old_price - $c_price;
+        $payments =Payment::find($id);
+        $payments->price=$result;
+        $payments->update();
+
+        $repayments = new Repayment;
+        $repayments->payments_id = $id; 
+        $repayments->take_amount = $c_price;
+        $repayments->details = $request->detail;
+        $repayments->date = $request->date;
+        $repayments->gave_amount =0;
         $repayments->save();
 
         $arr=["msg"=>"success"];

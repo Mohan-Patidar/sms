@@ -360,37 +360,57 @@ $('.addpayment').click(function(){
             },
             success: function(fb) {
                 $('#extrapays').trigger('reset');  
-                location.reload();
-
-                        
-             }
-
+                location.reload();                
+       }
         });
-        
-    
+});
 });
 
-
-
+$('.subpayment').click(function(){
+    var id = $(this).attr('data-id');
+    var old = $(this).attr('data-name');
+    $('#ids').val(id);
+    $('#oldprice').val(old);
+    $('#subpayment').modal('show');
     
-//    console.log(price);
-            // $.ajax({
-            //     url: 'addpay',
-            //     method: "Post",
-            //     data: {
-            //         old_price: old,
-            //         detail: detail,
-            //         id:id,
-            //         price:price,
-            //         "_token": "{{ csrf_token() }}",
-            //     },
-            //     success: function(fb) {
-                   
-            //         console.log(fb);
-            //     }
-            // });
-   
+    $('.subpay').click(function(){
+        // var old = $("#old_price").val();
+        var price = $("#tprices").val();
+        // var id = $("#id").val();
+        var date = $("#tdates").val();
+        var detail = $("#tdetails").val();
+
+        $.ajax({
+            url:'subpayment',
+            method:"post",
+            data:{
+                old_price:old,
+                id:id, 
+                price:price,
+                date:date,
+                detail:detail,
+                "_token": "{{ csrf_token() }}",           
+            },
+            success: function(fb) {
+                $('#takeamount').trigger('reset');  
+                location.reload();                
+       }
+        });
 });
+});
+
+$('.payment').click(function(){
+    var id = $(this).attr('data-id');
+    var old = $(this).attr('data-name');
+    $('#ids').val(id);
+    $('#oldprice').val(old);
+    $('#subpayment').modal('show');
+    
+  
+
+      
+});
+
     
 
 

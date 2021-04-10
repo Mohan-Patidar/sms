@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'disablepreventback']], function () {
     Route::resource('/years','App\Http\Controllers\YearController');
     Route::resource('/extrapay','App\Http\Controllers\ExtraPayController');
     Route::post('addpayment', 'App\Http\Controllers\ExtraPayController@addPayment')->name('addPayment');
+    Route::post('subpayment', 'App\Http\Controllers\ExtraPayController@subpayment')->name('subpayment');
+
     // Route::post('/addpayment','App\Http\Controllers\ExtraPayController@save')->name('save');
 
     Route::post('report', 'App\Http\Controllers\ReportController@update')->name('update');
