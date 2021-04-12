@@ -51,7 +51,9 @@
              
            
             @endphp
-                            <td><a href="javascript:void(0)" class="addpayment" data-id="{{$id}}" data-name={{$gave}}>
+                            <td>
+                           
+                            <a href="javascript:void(0)" class="addpayment" data-id="{{$id}}" data-name={{$gave}}>
                                   Gave
                                 </a>
                                 <a href="javascript:void(0)" class="subpayment" data-id="{{$id}}" data-name={{$gave}}>

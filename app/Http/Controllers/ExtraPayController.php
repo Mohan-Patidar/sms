@@ -20,7 +20,7 @@ class ExtraPayController extends Controller
     public function show(Request $request,$id){
 
         $student =Payment::find($id);
-        $class = Student_classe::get(); 
+       
         // $data = DB::table('payments')
         // ->select('payments.*','repayments.take_amount','repayments.gave_amount')
         // ->join('repayments', 'payments.id', '=', 'repayments.payments_id')
@@ -31,11 +31,11 @@ class ExtraPayController extends Controller
         // $due=$gave-$take;
       
           
-            $id=$student->id;
+          
             
       
         
-        return view ('admin.extra.show',compact("class","student","id"));
+     return response()->json($student);
             
        
      }
@@ -93,6 +93,21 @@ class ExtraPayController extends Controller
 
         $arr=["msg"=>"success"];
         echo json_encode($arr); 
+        
+        
         // return  response()->json( $payments);
+    }
+    public function showDetails(Request $request){
+        $id=$request->id;
+        $student =Payment::find($id);
+
+       
+        $gave = Repayment::where("payments_id", "=", $id)->sum('gave_amount');
+        $take = Repayment::where("payments_id", "=", $id)->sum('take_amount');
+        $due=$gave-$take;
+
+        $arr=["student"=>$student,"gave"=>$gave,"take"=>$take,"due"=>$due];
+        echo json_encode($arr); 
+         
     }
 }

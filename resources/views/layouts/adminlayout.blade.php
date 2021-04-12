@@ -405,8 +405,35 @@ $('.payment').click(function(){
     $('#ids').val(id);
     $('#oldprice').val(old);
     $('#subpayment').modal('show');
+
+      
+});      
+
+$('.showdetails').click(function(){
+    var id = $(this).attr('data-id');
+    $.ajax({
+
+        url: "showdetails", 
+            method:"post",
+            data:{
+                id:id, 
+                "_token": "{{ csrf_token() }}",           
+            },
+            success: function(fb) { 
+                var res=jQuery.parseJSON(fb);
+                console.log(res);
+                $('.gave').html(res.gave);
+                $('.take').html(res.due);
+            $('.s_name').html(res.student.name);
+            $('.f_name').html(res.student.fname);
+            $('.m_name').html(res.student.mname);
+            
+            $('#showdetail').modal('show'); 
+                     
+       }
+        });
+   
     
-  
 
       
 });

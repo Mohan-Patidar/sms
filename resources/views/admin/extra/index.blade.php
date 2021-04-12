@@ -109,7 +109,11 @@
              
            
             @endphp
-                            <td><a href="javascript:void(0)" class="addpayment" data-id="{{$s->id}}" data-name={{$gave}}>
+                            <td>
+                            <a href="javascript:void(0)" class="showdetails" data-id="{{$s->id}}" >
+                                 view more
+                                </a>
+                            <a href="javascript:void(0)" class="addpayment" data-id="{{$s->id}}" data-name={{$gave}}>
                                   Gave
                                 </a>
                                 <a href="javascript:void(0)" class="subpayment" data-id="{{$s->id}}" data-name={{$gave}}>
@@ -206,6 +210,46 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div class="modal fade" id="showdetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                        <div class="student-name">
+                                                            <h5 class="s_name"></h5>
+                                                            <div class="stu-detail">
+                                                                <div class="user-dtls">
+                                                                <label>Father's name:</label>
+                                                                    <span class="f_name"></span></br>
+                                                                    <label>Mother's name:</label>
+                                                                    <span class="m_name"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                        <div class="fee-sec">
+                                        <div class="fee-left">
+                                            <h6>Gave Amount: <span class="total-fee gave"><label>₹</label></span></h6>
+                                        </div>
+                                        <div class="fee-right">
+                                            <h6>Due Amount: <span class="due-fee take"><label>₹</label></span></h6>
+                                        </div>
+                                    </div>
+                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 
 </div>
